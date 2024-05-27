@@ -23,7 +23,10 @@ public class FizzBuzzGameUi
 
     private GameSpecification CreateGameSpecification()
     {
-        return null;
+        return new GameSpecification(
+                new SortedList<GameRule, string> { { new(Operator.And, "FizzBuzz", new[] { 3, 5 }), "FizzBuzz" },
+                    { new(null, "Fizz", new[] { 3 }), "Fizz"  },
+                    { new(null, "Buzz", new[] { 5 }), "Buzz"  }});
     }
 
     private int GetNumber()

@@ -6,37 +6,33 @@ using System.Threading.Tasks;
 
 namespace CodeCool.FizzBuzzCooperation.Model
 {
-    public record GameRule(string returnString,IEnumerable<int> divisors)
+    public record GameRule(Operator? Op, string returnString, int[] divisors) : IComparable<GameRule>
     {
-
-        public GameRule(Operator operators, string returnString, params int[] divisors) : this(
-            returnString,createDivisors(operators,divisors)
-            )
-        {
-            
-        }
-
-        public GameRule(string returnString, int divisor) :this(returnString, new List<int>(divisor))
+        public GameRule(string returnString, int divisor) :this(null,returnString, new int[] { divisor })
         {
 
         }
 
-        static private IEnumerable<int> createDivisors(Operator operators, int[] divisors) 
+        public int CompareTo(GameRule other)
         {
-            if(operators == Operator.And)
+            if (other == null)
             {
-                int temp = divisors[0];
-                for (int i = 1; i < divisors.Length; i++)
-                {
-                    temp *= divisors[i];
-                }
-                return new List<int>(temp);
-            } else if(operators == Operator.Or)
-            {
-                return divisors;
+                return 1;
             }
-            return divisors;
 
+            int result = other.divisors.Length.CompareTo(divisors.Length);
+            if (result != 0)
+            {
+                return result;
+            }
+            result = string.Compare(returnString, other.returnString, StringComparison.Ordinal);
+            if (result != 0)
+            {
+                return result;
+            }
+
+
+            return 0; 
         }
     }
 }

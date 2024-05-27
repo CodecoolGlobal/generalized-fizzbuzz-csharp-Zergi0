@@ -1,3 +1,3 @@
 ﻿namespace CodeCool.FizzBuzzCooperation.Model;
 
-public record GameSpecification(List<GameRule> rules);
+public record GameSpecification(SortedList<GameRule, string> rules);
