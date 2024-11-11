@@ -1,10 +1,12 @@
-﻿using CodeCool.FizzBuzzCooperation.Service.Division;
+﻿using CodeCool.FizzBuzzCooperation.Model;
+using CodeCool.FizzBuzzCooperation.Service.Division;
 using CodeCool.FizzBuzzCooperation.Service.Game;
 using CodeCool.FizzBuzzCooperation.UI;
 
 
-IDivisionService divisionService = null;
-IGameService gameService = null;
+IDivisionService divisionService = new DivisionService();
+IGameService gameService = new GameService(divisionService);
+
 
 var ui = new FizzBuzzGameUi(gameService);
 
