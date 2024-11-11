@@ -1,5 +1,5 @@
 # About The Project
-This is a C# project for creating a generic version of the popular Kata of FizzBuzz. \ 
+This is a C# project for creating a generic version of the popular Kata of FizzBuzz. /
 The project is built in a way where it is easily expanded to work it:
 - Customizeable outputs
 - Customize rules
